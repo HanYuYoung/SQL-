@@ -5,6 +5,8 @@
 ![SQL查询执行顺序可视化](https://img.shields.io/badge/SQL-执行顺序-blue)
 ![交互式学习](https://img.shields.io/badge/交互式-学习-green)
 
+![网页样式](https://github.com/HanYuYoung/SQL-step-by-step/blob/main/demo/demo.png)
+
 ## 功能特点
 
 - **九宫格可视化**：直观展示SQL查询的九大执行步骤
