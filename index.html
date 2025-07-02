@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SQL查询执行顺序全解析</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github-dark.min.css">
+  <script src="sql_step_details.js"></script>
+  <script src="sql_examples.js"></script>
+</head>
+<body>
+  <header class="header-gradient">
+    <h1>SQL查询执行顺序全解析</h1>
+    <p>用最直观的方式掌握SQL核心查询流程</p>
+  </header>
+  <main class="main-flex">
+    <!-- 上方部分：执行顺序九宫格和步骤详情 -->
+    <section class="top-section animated-card">
+      <div class="steps-grid-container">
+        <h3>执行顺序九宫格</h3>
+        <div id="steps-grid">
+          <!-- 九宫格由JS动态生成 -->
+        </div>
+      </div>
+      <div class="steps-detail-container">
+        <h2 id="step-title">步骤详情</h2>
+        <div id="step-detail">
+          <!-- 步骤详情由JS动态生成 -->
+        </div>
+      </div>
+    </section>
+    
+    <!-- 下方部分：模拟运行和SQL示例 -->
+    <div class="bottom-section">
+      <!-- 左侧：模拟运行控制 -->
+      <section class="control-section animated-card">
+        <h2>模拟运行</h2>
+        <div class="control-panel">
+          <!-- 控制面板由JS动态生成 -->
+        </div>
+      </section>
+      
+      <!-- 右侧：SQL示例 -->
+      <section class="example-section animated-card">
+        <h2>完整SQL示例</h2>
+        <!-- SQL描述由JS动态生成 -->
+        <pre><code class="sql" id="sql-example">SELECT DISTINCT department, COUNT(*) as emp_count
+FROM employees
+JOIN departments ON employees.dept_id = departments.id
+WHERE salary > 5000
+GROUP BY department
+HAVING COUNT(*) > 3
+ORDER BY emp_count DESC
+LIMIT 10;</code></pre>
+        <button id="copy-btn">复制代码</button>
+      </section>
+    </div>
+    
+    <!-- 新增：SQL执行顺序分析器 -->
+    <section class="sql-analyzer-section animated-card">
+      <h2>SQL执行顺序分析器</h2>
+      <p class="analyzer-desc">输入您的SQL语句，系统将分析其执行顺序</p>
+      <div class="analyzer-container">
+        <div class="textarea-container">
+          <textarea id="sql-input" placeholder="请在此输入您的SQL语句..." class="sql-textarea"></textarea>
+        </div>
+        <div class="analyzer-controls">
+          <button id="analyze-btn" class="analyze-btn">分析执行顺序</button>
+          <button id="clear-btn" class="clear-btn">清空</button>
+        </div>
+        <div id="analysis-result" class="analysis-result">
+          <!-- 分析结果将在此显示 -->
+          <div class="result-placeholder">分析结果将在这里显示</div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p>© 2024 SQL教程 | 视觉与交互体验升级版</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html> 

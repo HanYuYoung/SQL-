@@ -1,0 +1,862 @@
+body {
+  font-family: 'Roboto', Arial, sans-serif;
+  background: #f7f9fb;
+  color: #222;
+  margin: 0;
+  padding: 0;
+}
+header {
+  background: linear-gradient(90deg, #4f8cff 0%, #6ed6ff 100%);
+  color: #fff;
+  padding: 2rem 1rem 1rem 1rem;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(79,140,255,0.08);
+}
+header h1 {
+  margin: 0 0 0.5rem 0;
+  font-size: 2.2rem;
+  font-weight: 700;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+header p {
+  margin: 0;
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+.main-flex {
+  display: flex;
+  flex-direction: column;
+  max-width: 1200px;
+  margin: 2.5rem auto 1.5rem auto;
+  padding: 0 1.5rem;
+  gap: 2.5rem;
+}
+
+/* 上方部分样式 */
+.top-section {
+  display: flex;
+  gap: 2rem;
+  background: rgba(255,255,255,0.97);
+  border-radius: 28px;
+  box-shadow: 0 8px 40px rgba(79,140,255,0.13);
+  padding: 2.5rem;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.top-section:hover {
+  box-shadow: 0 10px 45px rgba(79,140,255,0.18);
+  transform: translateY(-5px);
+}
+
+.steps-grid-container {
+  flex: 0 0 460px;
+  min-width: 360px;
+  max-width: 490px;
+}
+
+.steps-grid-container h3 {
+  margin: 0 0 2rem 0;
+  font-size: 1.25rem;
+  color: #4f8cff;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.steps-detail-container {
+  flex: 1;
+  min-width: 0;
+}
+
+/* 下方部分样式 */
+.bottom-section {
+  display: flex;
+  gap: 2rem;
+}
+
+.control-section {
+  flex: 1;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  padding: 1.8rem;
+  transition: box-shadow 0.2s, transform 0.2s;
+  border: 1px solid #e3eaf2;
+}
+
+.control-section:hover {
+  box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+  transform: translateY(-3px);
+}
+
+.control-section h2 {
+  margin-top: 0;
+  margin-bottom: 1.2rem;
+  font-size: 1.4rem;
+  color: #2a3f5f;
+}
+
+/* 保留原有的部分样式，调整部分样式 */
+#steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem 0.8rem;
+  justify-items: center;
+  align-items: stretch;
+  width: 100%;
+  min-height: 420px;
+}
+
+.step-grid-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.2em;
+  font-size: 1.08rem;
+  font-weight: 700;
+  min-width: 110px;
+  width: 98%;
+  max-width: 98%;
+  min-height: 110px;
+  height: auto;
+  border-radius: 18px;
+  border: 2px solid #e3eaf2;
+  background: linear-gradient(135deg, #eaf4ff 0%, #f0f6ff 100%);
+  box-shadow: 0 4px 24px rgba(79,140,255,0.13);
+  color: #4f8cff;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  outline: none;
+  user-select: none;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  text-align: center;
+  word-break: keep-all;
+  white-space: nowrap;
+  padding: 0.7em 0.5em 0.7em 0.5em;
+}
+
+.step-grid-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(79,140,255,0.2);
+  border-color: #bcdcff;
+}
+
+.step-grid-btn.active {
+  background: linear-gradient(135deg, #4f8cff 0%, #6ed6ff 100%);
+  color: #fff;
+  border-color: #4f8cff;
+  box-shadow: 0 6px 28px rgba(79,140,255,0.25);
+}
+
+.step-grid-btn .step-icon {
+  font-size: 1.7em;
+  margin-bottom: 0.1em;
+  display: block;
+  transform: scale(1);
+  transition: transform 0.2s;
+}
+
+.step-grid-btn:hover .step-icon {
+  transform: scale(1.15);
+}
+
+.step-grid-btn .step-title {
+  font-size: 1.08em;
+  font-weight: 800;
+  margin-bottom: 0.1em;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.step-grid-btn .step-desc {
+  font-size: 0.92em;
+  color: #6a7ba2;
+  font-weight: 400;
+  margin-top: 0.1em;
+  line-height: 1.3;
+  word-break: break-word;
+  white-space: normal;
+  transition: color 0.2s;
+  padding: 0 0.2em;
+}
+
+.step-grid-btn.active .step-desc {
+  color: rgba(255,255,255,0.85);
+}
+
+.step-grid-btn.sim-highlight {
+  background: linear-gradient(135deg, #ffb347 0%, #ff6b4d 100%);
+  color: #fff;
+  border-color: #ffb347;
+  box-shadow: 0 12px 40px rgba(255,179,71,0.25);
+  animation: simPulse 1.2s infinite alternate;
+  transform: translateY(-5px) scale(1.05);
+  z-index: 2;
+}
+
+.step-grid-btn.sim-highlight .step-desc {
+  color: rgba(255,255,255,0.9);
+}
+
+@keyframes simPulse {
+  0% { box-shadow: 0 6px 20px rgba(255,107,77,0.4); }
+  100% { box-shadow: 0 8px 32px rgba(255,179,71,0.7); }
+}
+
+#sql-select {
+  display: block;
+  flex: 1;
+  min-width: 200px;
+  padding: 0.7em 1.2em;
+  height: 44px;
+  box-sizing: border-box;
+  border-radius: 12px;
+  border: 2px solid #bcdcff;
+  font-size: 1.1rem;
+  background: #f7faff;
+  color: #1a3a5e;
+  font-weight: 700;
+  outline: none;
+  box-shadow: 0 2px 8px rgba(79,140,255,0.09);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+#sql-select:focus, #sql-select:hover {
+  border: 2px solid #4f8cff;
+  box-shadow: 0 4px 12px rgba(79,140,255,0.15);
+}
+
+/* 调整示例部分的样式 */
+.example-section {
+  flex: 1;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  padding: 1.8rem;
+  transition: box-shadow 0.2s, transform 0.2s;
+  border: 1px solid #e3eaf2;
+}
+
+.example-section:hover {
+  box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+  transform: translateY(-3px);
+}
+
+.example-section h2 {
+  margin-top: 0;
+  margin-bottom: 1.2rem;
+  font-size: 1.4rem;
+  color: #2a3f5f;
+}
+
+/* 确保原有的控制面板样式适应新布局 */
+.control-panel {
+  background: #fff;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 4px 20px rgba(79,140,255,0.1);
+  margin-bottom: 20px;
+  border: 1px solid #e3eaf2;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.simulate-btn {
+  display: inline-block;
+  min-width: 150px;
+  height: 44px;
+  box-sizing: border-box;
+  background: linear-gradient(90deg, #4f8cff 0%, #6ed6ff 100%);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 0.7rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 16px rgba(79,140,255,0.13);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.simulate-btn:hover:not(:disabled) {
+  background: linear-gradient(90deg, #3576d6 0%, #4f8cff 100%);
+  box-shadow: 0 8px 32px rgba(79,140,255,0.18);
+  transform: translateY(-3px);
+}
+.simulate-btn:active:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(79,140,255,0.2);
+}
+.simulate-btn:disabled {
+  background: linear-gradient(90deg, #4f8cff 0%, #6ed6ff 100%);
+  opacity: 0.85;
+  cursor: not-allowed;
+}
+.sql-desc {
+  font-size: 1.18rem;
+  color: #4f8cff;
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+  margin-top: 0.5rem;
+  letter-spacing: 0.2px;
+  line-height: 1.4;
+  padding: 10px;
+  background: #f7faff;
+  border-radius: 8px;
+  border-left: 4px solid #4f8cff;
+}
+.content-area {
+  flex: 1 1 0%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.steps-section {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  padding: 2rem 1.8rem 1.8rem 1.8rem;
+  margin-bottom: 0;
+  transition: box-shadow 0.2s, transform 0.2s;
+  border: 1px solid #e3eaf2;
+}
+.steps-section:hover, .example-section:hover {
+  box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+  transform: translateY(-3px);
+}
+#step-title {
+  margin-top: 0;
+  color: #4f8cff;
+  font-size: 1.6rem;
+  font-weight: 800;
+}
+#step-detail {
+  margin-top: 1.2rem;
+}
+.step-card {
+  background: #f7faff;
+  border-left: 4px solid #4f8cff;
+  border-radius: 12px;
+  padding: 1.2rem 1.5rem 1rem 1.5rem;
+  box-shadow: 0 4px 12px rgba(79,140,255,0.08);
+  margin-bottom: 0;
+  transition: transform 0.2s;
+}
+.step-card:hover {
+  transform: translateX(5px);
+}
+.step-title {
+  font-weight: 700;
+  color: #4f8cff;
+  margin-bottom: 0.8rem;
+  font-size: 1.3rem;
+}
+.step-sql {
+  background: #23272e;
+  color: #fff;
+  border-radius: 8px;
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  margin: 0.8rem 0;
+  font-family: 'Fira Mono', 'Consolas', monospace;
+  overflow-x: auto;
+}
+.step-tip {
+  color: #e67e22;
+  font-size: 0.95rem;
+  margin-top: 0.5rem;
+  font-weight: 500;
+}
+.example-section pre {
+  background: #23272e;
+  color: #fff;
+  border-radius: 10px;
+  padding: 1.2rem;
+  font-size: 1.05rem;
+  overflow-x: auto;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  margin: 1rem 0;
+}
+#copy-btn {
+  margin-top: 0.8rem;
+  background: #4f8cff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 12px rgba(79,140,255,0.15);
+}
+#copy-btn:hover {
+  background: #3576d6;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(79,140,255,0.2);
+}
+.animated-card {
+  animation: fadeInUp 0.5s ease-out;
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.ai-chat {
+  background: #f7faff;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 1px 4px rgba(79,140,255,0.06);
+  max-width: 600px;
+  margin: 0 auto;
+}
+#chat-history {
+  min-height: 120px;
+  max-height: 260px;
+  overflow-y: auto;
+}
+.chat-input-row {
+  display: flex;
+  margin-top: 1rem;
+}
+#user-input {
+  flex: 1;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #bcdcff;
+}
+#send-btn {
+  background: #4f8cff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  margin-left: 0.5rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+#send-btn:hover {
+  background: #3576d6;
+}
+.ai-message {
+  background: #e3f2fd;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+}
+.user-message {
+  background: #e8f5e9;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  text-align: right;
+}
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  color: #6a7ba2;
+  font-size: 0.9rem;
+  margin-top: 2rem;
+  background: #f7f9fb;
+  border-top: 1px solid #e3eaf2;
+}
+@media (max-width: 1000px) {
+  .main-flex {
+    padding: 0 1rem;
+  }
+  
+  .top-section {
+    flex-direction: column;
+    padding: 1.8rem;
+  }
+  
+  .steps-grid-container {
+    flex: none;
+    max-width: 100%;
+    width: 100%;
+    min-width: 100%;
+    margin-bottom: 1.5rem;
+  }
+  
+  .steps-detail-container {
+    width: 100%;
+  }
+  
+  .bottom-section {
+    flex-direction: column;
+  }
+}
+@media (max-width: 700px) {
+  .main-flex {
+    padding: 0 0.8rem;
+  }
+  
+  .top-section {
+    padding: 1.2rem;
+  }
+  
+  #steps-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.6rem;
+    min-height: auto;
+  }
+  
+  .step-grid-btn {
+    min-height: 90px;
+    font-size: 0.95rem;
+  }
+  
+  .animated-card {
+    animation: none;
+  }
+  
+  .control-panel {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  #sql-select {
+    width: 100%;
+  }
+  
+  .simulate-btn {
+    width: 100%;
+  }
+  
+  .example-section {
+    padding: 1.2rem;
+  }
+}
+
+/* 详细解释样式 */
+.step-card p {
+  margin: 0.8em 0;
+  line-height: 1.6;
+  color: #334155;
+}
+
+.step-card strong {
+  color: #4f8cff;
+  font-weight: 700;
+}
+
+.step-card ul {
+  margin: 0.8em 0;
+  padding-left: 1.5em;
+  list-style-type: disc;
+}
+
+.step-card ul ul {
+  margin: 0.4em 0;
+  padding-left: 1.5em;
+}
+
+.step-card li {
+  margin-bottom: 0.5em;
+  line-height: 1.5;
+  color: #334155;
+}
+
+.step-card pre {
+  background: #f1f5fb;
+  padding: 0.6em 1em;
+  margin: 0.5em 0;
+  border-radius: 6px;
+  font-family: monospace;
+  font-size: 1.1em;
+  color: #2563EB;
+  overflow-x: auto;
+  white-space: pre;
+  border-left: 3px solid #4f8cff;
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+/* 模拟控制按钮样式 */
+.simulation-controls {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.simulation-progress {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #4f8cff;
+  text-align: center;
+  padding: 0.5rem;
+  border-radius: 8px;
+  background: #f0f6ff;
+  border: 1px dashed #bcdcff;
+}
+
+.simulation-buttons {
+  display: flex;
+  gap: 0.8rem;
+  justify-content: center;
+}
+
+.nav-btn {
+  padding: 0.6rem 1.2rem;
+  border-radius: 10px;
+  border: 2px solid #e3eaf2;
+  background: linear-gradient(135deg, #f7faff 0%, #eaf4ff 100%);
+  color: #4f8cff;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 8px rgba(79,140,255,0.1);
+  min-width: 90px;
+  text-align: center;
+}
+
+.nav-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(79,140,255,0.18);
+  border-color: #bcdcff;
+}
+
+.nav-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.prev-btn {
+  border-color: #bcdcff;
+}
+
+.next-btn {
+  border-color: #4f8cff;
+  background: linear-gradient(135deg, #eaf4ff 0%, #d6eaff 100%);
+}
+
+.auto-btn {
+  background: linear-gradient(90deg, #4f8cff 0%, #6ed6ff 100%);
+  color: #fff;
+  border-color: #4f8cff;
+}
+
+.auto-btn:hover:not(:disabled) {
+  background: linear-gradient(90deg, #3576d6 0%, #4f8cff 100%);
+  box-shadow: 0 4px 16px rgba(79,140,255,0.2);
+}
+
+@media (max-width: 700px) {
+  .simulation-buttons {
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  
+  .nav-btn {
+    width: 100%;
+    padding: 0.8rem 1rem;
+  }
+}
+
+/* SQL分析器样式 */
+.sql-analyzer-section {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  padding: 2rem;
+  margin-top: 2rem;
+  transition: box-shadow 0.2s, transform 0.2s;
+  border: 1px solid #e3eaf2;
+}
+
+.sql-analyzer-section:hover {
+  box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+  transform: translateY(-3px);
+}
+
+.sql-analyzer-section h2 {
+  margin-top: 0;
+  margin-bottom: 0.8rem;
+  font-size: 1.4rem;
+  color: #2a3f5f;
+}
+
+.analyzer-desc {
+  color: #4f8cff;
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+.analyzer-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.textarea-container {
+  position: relative;
+  width: 100%;
+}
+
+.sql-textarea {
+  width: 100%;
+  height: 150px;
+  padding: 1rem;
+  border-radius: 12px;
+  border: 2px solid #bcdcff;
+  background: #f7faff;
+  color: #1a3a5e;
+  font-family: monospace;
+  font-size: 1rem;
+  line-height: 1.5;
+  resize: vertical;
+  transition: all 0.2s ease;
+  box-shadow: inset 0 1px 8px rgba(79,140,255,0.05);
+}
+
+.sql-textarea:focus {
+  outline: none;
+  border-color: #4f8cff;
+  box-shadow: 0 0 0 3px rgba(79,140,255,0.1), inset 0 1px 8px rgba(79,140,255,0.05);
+}
+
+.analyzer-controls {
+  display: flex;
+  gap: 1rem;
+}
+
+.analyze-btn {
+  flex: 1;
+  padding: 0.8rem 1.5rem;
+  background: linear-gradient(90deg, #4f8cff 0%, #6ed6ff 100%);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 16px rgba(79,140,255,0.13);
+}
+
+.analyze-btn:hover {
+  background: linear-gradient(90deg, #3576d6 0%, #4f8cff 100%);
+  box-shadow: 0 8px 24px rgba(79,140,255,0.2);
+  transform: translateY(-2px);
+}
+
+.clear-btn {
+  padding: 0.8rem 1.5rem;
+  background: #fff;
+  color: #4f8cff;
+  border: 2px solid #bcdcff;
+  border-radius: 12px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.clear-btn:hover {
+  background: #f0f6ff;
+  border-color: #4f8cff;
+  transform: translateY(-2px);
+}
+
+.analysis-result {
+  background: #f7faff;
+  border-radius: 12px;
+  border: 1px dashed #bcdcff;
+  padding: 1.2rem;
+  min-height: 80px;
+}
+
+.result-placeholder {
+  color: #8aa2c8;
+  text-align: center;
+  font-style: italic;
+  margin-top: 1rem;
+}
+
+.order-step {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.8rem;
+  padding: 0.8rem;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(79,140,255,0.08);
+  transition: transform 0.2s;
+}
+
+.order-step:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(79,140,255,0.12);
+}
+
+.order-step-number {
+  flex: 0 0 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #4f8cff;
+  color: #fff;
+  border-radius: 50%;
+  font-weight: 700;
+  margin-right: 12px;
+}
+
+.order-step-content {
+  display: flex;
+  align-items: center;
+}
+
+.order-step-icon {
+  font-size: 1.5rem;
+  margin-right: 8px;
+}
+
+.order-step-name {
+  font-weight: 700;
+  color: #2a3f5f;
+  margin-right: 8px;
+}
+
+.order-step-desc {
+  color: #6a7ba2;
+  font-size: 0.95rem;
+}
+
+.error-message {
+  color: #ff4d6b;
+  background: #fff0f3;
+  border-left: 4px solid #ff4d6b;
+  padding: 1rem;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+@media (max-width: 700px) {
+  .analyzer-controls {
+    flex-direction: column;
+  }
+  
+  .sql-textarea {
+    height: 120px;
+  }
+} 
